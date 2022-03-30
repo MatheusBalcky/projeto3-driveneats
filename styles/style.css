@@ -12,7 +12,9 @@
 }
 body{
     font-family: var(--normal-font);
+    background-color: #E5E5E5;
 }
+/* top website config */
 header{
     color: white;
     display: flex;
@@ -21,6 +23,11 @@ header{
     height: 92px;
     background-color: var(--main-color);
     padding-left: 20px;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.466);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 header > h1{
     font-size: 2.8em;
@@ -28,4 +35,12 @@ header > h1{
 }
 header > p{
     font-size: 1.2em;
+}
+
+
+/* main content config */
+
+main{
+    margin: 122px 10px;
+    background-color: red;
 }
