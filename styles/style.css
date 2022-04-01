@@ -97,6 +97,7 @@ main{
     
 }
 
+/* foot website config */
 footer{
     display: flex;
     justify-content: center;
@@ -121,4 +122,10 @@ footer div{
 footer p{
     color: white;
     font-size: 1.2em;
+}
+
+/* config para js */
+
+.selected{
+    border: 2px solid #32B72F;
 }
