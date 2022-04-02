@@ -9,6 +9,38 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
+
+    <div class="confirm-canva hidden">
+        <div class="final-list">
+            <h3><strong>Confirme seu pedido</strong></h3>
+            <br>
+            <div>
+                <p class="plate-selected"></p>
+                <p class="value-plate"></p>
+            </div>
+            <br>
+            <div>
+                <p class="drink-selected"></p>
+                <p class="value-drink"></p>
+            </div>
+            <br>
+            <div>
+                <p class="dessert-selected"></p>
+                <p class="value-dessert"></p>
+            </div>
+            <br>
+            <div>
+                <p><strong>TOTAL</strong></p>
+                <p class="totalValue"></p>
+            </div>
+
+            <div class="buttons-options">
+                <div class="confirm-order-button" onclick="sendOrder()"><strong>Tudo certo, pode pedir!</strong></div>
+                <div class="calloff-order" onclick="calloffOrder()">Cancelar</div>
+            </div>
+        </div>
+    </div>
+
     <!-- Website Header -->
     <header>
         <h1>DrivenEats</h1>
@@ -23,7 +55,7 @@
 
             <div class="canva-list-itens">
                 <div class="list-itens">
-                    <div class="menu-option" onclick="selected(this)">
+                    <div class="menu-option chicken" onclick="plateSelected(this)">
                         <img src="./components/images/chicken-img.jpg" alt="chicken-photo">
                         <div class="description-item">
                             <h3>Frango Yin Yang</h3>
@@ -31,28 +63,28 @@
                             <h4>R$ 14,90</h4>
                         </div>
                     </div>
-                    <div class="menu-option" onclick="selected(this)">
+                    <div class="menu-option fish" onclick="plateSelected(this)">
                         <img src="./components/images/chicken-img.jpg" alt="chicken-photo">
                         <div class="description-item">
-                            <h3>Peixe</h3>
+                            <h3>Peixe Frito</h3>
                             <p>Um pouco de batata,<br>um pouco de salada</p>
-                            <h4>R$ 14,90</h4>
+                            <h4>R$ 12,90</h4>
                         </div>
                     </div>
-                    <div class="menu-option" onclick="selected(this)">
+                    <div class="menu-option meat" onclick="plateSelected(this)">
                         <img src="./components/images/chicken-img.jpg" alt="chicken-photo">
                         <div class="description-item">
-                            <h3>Carne</h3>
+                            <h3>Carne ao molho</h3>
                             <p>Um pouco de batata,<br>um pouco de salada</p>
-                            <h4>R$ 14,90</h4>
+                            <h4>R$ 16,90</h4>
                         </div>
                     </div>
-                    <div class="menu-option" onclick="selected(this)">
+                    <div class="menu-option pig" onclick="plateSelected(this)">
                         <img src="./components/images/chicken-img.jpg" alt="chicken-photo">
                         <div class="description-item">
-                            <h3>Porco</h3>
+                            <h3>Carne de Porco</h3>
                             <p>Um pouco de batata,<br>um pouco de salada</p>
-                            <h4>R$ 14,90</h4>
+                            <h4>R$ 13,90</h4>
                         </div>
                     </div>
                 </div>
@@ -62,7 +94,7 @@
 
             <div class="canva-list-itens">
                 <div class="list-itens">
-                    <div class="menu-option">
+                    <div class="menu-option coke" onclick="drinkSelected(this)" >
                         <img src="./components/images/img-coke.jpg" alt="chicken-photo">
                         <div class="description-item">
                             <h3>Coquinha gelada</h3>
@@ -70,28 +102,28 @@
                             <h4>R$ 4,90</h4>
                         </div>
                     </div>
-                    <div class="menu-option">
+                    <div class="menu-option juice" onclick="drinkSelected(this)" >
                         <img src="./components/images/img-coke.jpg" alt="chicken-photo">
                         <div class="description-item">
-                            <h3>Coquinha gelada</h3>
+                            <h3>Suco gelado</h3>
                             <p>Lata 350 ml</p>
-                            <h4>R$ 4,90</h4>
+                            <h4>R$ 3,90</h4>
                         </div>
                     </div>
-                    <div class="menu-option">
+                    <div class="menu-option nescau" onclick="drinkSelected(this)" >
                         <img src="./components/images/img-coke.jpg" alt="chicken-photo">
                         <div class="description-item">
-                            <h3>Coquinha gelada</h3>
+                            <h3>Nescau</h3>
                             <p>Lata 350 ml</p>
-                            <h4>R$ 4,90</h4>
+                            <h4>R$ 99,90</h4>
                         </div>
                     </div>
-                    <div class="menu-option">
+                    <div class="menu-option shake" onclick="drinkSelected(this)" >
                         <img src="./components/images/img-coke.jpg" alt="chicken-photo">
                         <div class="description-item">
-                            <h3>Coquinha gelada</h3>
+                            <h3>Milkshake</h3>
                             <p>Lata 350 ml</p>
-                            <h4>R$ 4,90</h4>
+                            <h4>R$ 10,90</h4>
                         </div>
                     </div>
                 </div>
@@ -101,36 +133,36 @@
 
             <div class="canva-list-itens">
                 <div class="list-itens">
-                    <div class="menu-option">
-                        <img src="./components/images/pudim-img.jpg" alt="chicken-photo">
+                    <div class="menu-option pudding" onclick="dessertSelected(this)">
+                        <img src="./components/images/pudim-img.jpg" alt="pudim-photo">
                         <div class="description-item">
                             <h3>Pudim</h3>
                             <p>Apenas pudim</p>
                             <h4>R$ 7,90</h4>
                         </div>
                     </div>
-                    <div class="menu-option">
-                        <img src="./components/images/pudim-img.jpg" alt="chicken-photo">
+                    <div class="menu-option icecream" onclick="dessertSelected(this)">
+                        <img src="./components/images/pudim-img.jpg" alt="icecream-photo">
                         <div class="description-item">
-                            <h3>Pudim</h3>
+                            <h3>Sorvete</h3>
                             <p>Apenas pudim</p>
-                            <h4>R$ 7,90</h4>
+                            <h4>R$ 4,90</h4>
                         </div>
                     </div>
-                    <div class="menu-option">
-                        <img src="./components/images/pudim-img.jpg" alt="chicken-photo">
+                    <div class="menu-option pie" onclick="dessertSelected(this)">
+                        <img src="./components/images/pudim-img.jpg" alt="pie-photo">
                         <div class="description-item">
-                            <h3>Pudim</h3>
+                            <h3>Torta</h3>
                             <p>Apenas pudim</p>
-                            <h4>R$ 7,90</h4>
+                            <h4>R$ 5,90</h4>
                         </div>
                     </div>
-                    <div class="menu-option">
-                        <img src="./components/images/pudim-img.jpg" alt="chicken-photo">
+                    <div class="menu-option chocolat" onclick="dessertSelected(this)">
+                        <img src="./components/images/pudim-img.jpg" alt="chocolat-photo">
                         <div class="description-item">
-                            <h3>Pudim</h3>
+                            <h3>Chocolate</h3>
                             <p>Apenas pudim</p>
-                            <h4>R$ 7,90</h4>
+                            <h4>R$ 6,90</h4>
                         </div>
                     </div>
                 </div>
@@ -142,11 +174,17 @@
 
     <!-- End's Website-->
     <footer>
-        <div>
+
+        <div class="gray-button">
             <p>Selecione os 3 itens <br> para fechar o epdido</p>
         </div>
+
+        <div class="finish-order hidden" onclick="finishOrder()">
+            <p>Finalizar Pedido</p>
+        </div>
+
     </footer>
 
-    <script src="./js/script.js"></script>
+    <script src="./js/script.js"></script> 
 </body>
 </html>

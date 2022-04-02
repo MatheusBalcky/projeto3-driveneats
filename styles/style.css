@@ -66,6 +66,8 @@ main{
     background-color: white;
     border-radius: 9px;
     width: 172px;
+    border: 4px solid transparent;
+    cursor: pointer;
 }
 .menu-option img{
     width: 144px;
@@ -124,8 +126,64 @@ footer p{
     font-size: 1.2em;
 }
 
-/* config para js */
-
-.selected{
-    border: 2px solid #32B72F;
+.confirm-canva{
+    background-color: rgba(255, 255, 255, 0.776);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+.confirm-canva > div{
+    font-size: 22px;
+    color: white;
+    padding: 20px;
+    background-color: #50D074;;
+    height: 400px;
+    width: 95%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.final-list > div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.buttons-options{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.confirm-order-button{
+    background-color: white;
+    color: #32B72F;
+    padding: 15px 20px;
+    border-radius: 100px;
+    cursor: pointer;
+}
+.calloff-order{
+    cursor: pointer;
+}
+
+
+
+/* config para js */
+.selected-plate, .selected-drink, .selected-dessert{
+    border: 4px solid #32B72F;
+}
+.finish-order{
+    background-color: #32B72F;
+    cursor: pointer;
+}
+.hidden{
+    display: none;
+}
+
