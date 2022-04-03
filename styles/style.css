@@ -28,6 +28,7 @@ header{
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 1;
 }
 header > h1{
     font-size: 2.8em;
@@ -68,10 +69,22 @@ main{
     width: 172px;
     border: 4px solid transparent;
     cursor: pointer;
+    position: relative;
 }
-.menu-option img{
+.menu-option:hover{
+    background-color: rgba(255, 255, 255, 0.695);
+}
+.menu-option > img{
     width: 144px;
+    height: 87px;
     border-radius: 4px;
+}
+.checkImg{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    bottom: 5px;
+    right: 5px;
 }
 .menu-option > div{
     display: flex;
@@ -86,7 +99,7 @@ main{
 }
 .menu-option p{
     font-weight: lighter;
-    font-size: 0.9em;
+    font-size: 0.8em;
     color: #A6A6A6;
     line-height: 1.2em;
 }
@@ -127,12 +140,12 @@ footer p{
 }
 
 .confirm-canva{
-    background-color: rgba(255, 255, 255, 0.776);
+    background-color: rgba(255, 255, 255, 0.865);
     height: 100%;
     width: 100%;
     position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;

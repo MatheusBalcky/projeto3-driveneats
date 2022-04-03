@@ -2,12 +2,20 @@ let plate;   // guardar informação do prato escolhido
 let valuePlate; // guardar valor do prato escolhido
 
 function plateSelected(element){
-    let isSelected = document.querySelector(".selected-plate");
-    if (isSelected !== null){
+    let isSelected = document.querySelector(".selected-plate"); // verifica se tem prato selecionado
+    if (isSelected !== null){                                 // condição para q se houver prato selecionado remova o atual
         isSelected.classList.remove("selected-plate");
     }
-    element.classList.add("selected-plate");
-    
+    element.classList.add("selected-plate");                  // por fim o element selecionado tem sua seleção
+    // checkImg aparecer desaparecer
+    let isCheckOn = document.querySelector(".checkOn");  //vai ver se tem alguém que foi selecionado
+    if (isCheckOn !== null){                         // se tiver alguém selecionado remove a seleção e add o hidden nele
+      isCheckOn.classList.remove("checkOn");
+      isCheckOn.classList.add("hidden");
+    }
+    element.querySelector(".checkImg").classList.add("checkOn"); // o element atual recebe a seleção e remove o hidden
+    element.querySelector(".checkImg").classList.remove("hidden");
+    // checkImg aparecer desaparecer
     let isChicken = element.classList.contains("chicken");
     let isFish = element.classList.contains("fish");
     let isMeat = element.classList.contains("meat");
@@ -44,7 +52,15 @@ function drinkSelected(element){
         isSelected.classList.remove("selected-drink");
     }
     element.classList.add("selected-drink");
-
+    // checkImg aparecer desaparecer
+    let isCheckOn = document.querySelector(".checkOnDrink");  //vai ver se tem alguém que foi selecionado
+    if (isCheckOn !== null){                         // se tiver alguém selecionado remove a seleção e add o hidden nele
+      isCheckOn.classList.remove("checkOnDrink");
+      isCheckOn.classList.add("hidden");
+    }
+    element.querySelector(".checkImg").classList.add("checkOnDrink"); // o element atual recebe a seleção e remove o hidden
+    element.querySelector(".checkImg").classList.remove("hidden");
+    // checkImg aparecer desaparecer
     let isCoke = element.classList.contains("coke");
     let isJuice = element.classList.contains("juice");
     let isNescau = element.classList.contains("nescau");
@@ -81,7 +97,15 @@ function dessertSelected(element){
         isSelected.classList.remove("selected-dessert");
     }
     element.classList.add("selected-dessert");
-
+    // checkImg aparecer desaparecer
+    let isCheckOn = document.querySelector(".checkOnDessert");  //vai ver se tem alguém que foi selecionado
+    if (isCheckOn !== null){                         // se tiver alguém selecionado remove a seleção e add o hidden nele
+      isCheckOn.classList.remove("checkOnDessert");
+      isCheckOn.classList.add("hidden");
+    }
+    element.querySelector(".checkImg").classList.add("checkOnDessert"); // o element atual recebe a seleção e remove o hidden
+    element.querySelector(".checkImg").classList.remove("hidden");
+    // checkImg aparecer desaparecer
     let isPudding = element.classList.contains("pudding");
     let isIcecream = element.classList.contains("icecream");
     let isPie = element.classList.contains("pie");
