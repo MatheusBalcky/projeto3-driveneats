@@ -120,8 +120,9 @@ function isAllSelected (){ // função que verifica as variáveis SE estão pree
 }
 
 // fase final do código
+let totalValue = 0;
 function finishOrder(){  // função para finalizar pedido
-  let totalValue = valuePlate + valueDrink + valueDessert; // somar a conta do pedido
+  totalValue = valuePlate + valueDrink + valueDessert; // somar a conta do pedido
   document.querySelector(".confirm-canva").classList.remove("hidden"); // display tela de confirmação do pedido
 
   document.querySelector(".plate-selected").innerHTML = plate; // add o prato selecionado na confirmação
