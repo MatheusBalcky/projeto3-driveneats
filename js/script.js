@@ -1,21 +1,17 @@
 let plate;   // guardar informação do prato escolhido
 let valuePlate; // guardar valor do prato escolhido
-
 function plateSelected(element){
-    let isSelected = document.querySelector(".selected-plate"); // verifica se tem prato selecionado
-    if (isSelected !== null){                                 // condição para q se houver prato selecionado remova o atual
+    let isSelected = document.querySelector(".selected-plate");
+    let isCheckOn = document.querySelector(".checkOn");             // verifica se tem prato selecionado
+    if (isSelected !== null && isCheckOn !== null){                                 // condição para q se houver prato selecionado remova o atual
         isSelected.classList.remove("selected-plate");
+        isCheckOn.classList.remove("checkOn");
+        isCheckOn.classList.add("hidden");
     }
-    element.classList.add("selected-plate");                  // por fim o element selecionado tem sua seleção
-    // checkImg aparecer desaparecer
-    let isCheckOn = document.querySelector(".checkOn");  //vai ver se tem alguém que foi selecionado
-    if (isCheckOn !== null){                         // se tiver alguém selecionado remove a seleção e add o hidden nele
-      isCheckOn.classList.remove("checkOn");
-      isCheckOn.classList.add("hidden");
-    }
-    element.querySelector(".checkImg").classList.add("checkOn"); // o element atual recebe a seleção e remove o hidden
-    element.querySelector(".checkImg").classList.remove("hidden");
-    // checkImg aparecer desaparecer
+    element.classList.add("selected-plate");
+    element.querySelector(".checkImg").classList.add("checkOn"); 
+    element.querySelector(".checkImg").classList.remove("hidden");                
+
     let isChicken = element.classList.contains("chicken");
     let isFish = element.classList.contains("fish");
     let isMeat = element.classList.contains("meat");
@@ -37,30 +33,23 @@ function plateSelected(element){
       plate = "Vázio";
       valuePlate = 0;
     }
-    if(plate && dessert && drink){
-      document.querySelector(".gray-button").classList.add("hidden");
-      document.querySelector(".finish-order").classList.remove("hidden");
-    }
+    isAllSelected();
 }
 
 let drink;   // guardar informação do prato escolhido
 let valueDrink; // guardar valor do prato escolhido
-
 function drinkSelected(element){
     let isSelected = document.querySelector(".selected-drink"); //alternativa para não selecionar a mesma div da primeira lista é usar o seletor hierárquico
-    if (isSelected !== null){
+    let isCheckOn = document.querySelector(".checkOnDrink"); //vai ver se tem alguém que foi selecionado
+    if (isSelected !== null && isCheckOn !== null){
         isSelected.classList.remove("selected-drink");
+        isCheckOn.classList.remove("checkOnDrink");
+        isCheckOn.classList.add("hidden");
     }
     element.classList.add("selected-drink");
-    // checkImg aparecer desaparecer
-    let isCheckOn = document.querySelector(".checkOnDrink");  //vai ver se tem alguém que foi selecionado
-    if (isCheckOn !== null){                         // se tiver alguém selecionado remove a seleção e add o hidden nele
-      isCheckOn.classList.remove("checkOnDrink");
-      isCheckOn.classList.add("hidden");
-    }
     element.querySelector(".checkImg").classList.add("checkOnDrink"); // o element atual recebe a seleção e remove o hidden
     element.querySelector(".checkImg").classList.remove("hidden");
-    // checkImg aparecer desaparecer
+    
     let isCoke = element.classList.contains("coke");
     let isJuice = element.classList.contains("juice");
     let isNescau = element.classList.contains("nescau");
@@ -73,7 +62,7 @@ function drinkSelected(element){
       drink = "Suco gelado";
       valueDrink = 3.90;
     } else if (isNescau === true){
-      drink = "Nescau";
+      drink = "Wine - Vinho";
       valueDrink = 99.90;
     } else if (isShake === true){
       drink = "Milkshake";
@@ -82,36 +71,30 @@ function drinkSelected(element){
       drink = "Vázio";
       valueDrink = 0;
     }
-    if(plate && dessert && drink){
-      document.querySelector(".gray-button").classList.add("hidden");
-      document.querySelector(".finish-order").classList.remove("hidden");
-    }
+    isAllSelected();
 }
 
-let dessert; 
-let valueDessert; 
-
+let dessert; // guardar sobremesa
+let valueDessert;  // guardar valor sobremesa
 function dessertSelected(element){
+    
     let isSelected = document.querySelector(".selected-dessert");
-    if (isSelected !== null){
+    let isCheckOn = document.querySelector(".checkOnDessert");  //vai ver se tem alguém que foi selecionado
+    if (isSelected !== null){                                    // se tiver alguém selecionado remove a seleção e add o hidden nele
         isSelected.classList.remove("selected-dessert");
+        isCheckOn.classList.remove("checkOnDessert");
+        isCheckOn.classList.add("hidden");
     }
     element.classList.add("selected-dessert");
-    // checkImg aparecer desaparecer
-    let isCheckOn = document.querySelector(".checkOnDessert");  //vai ver se tem alguém que foi selecionado
-    if (isCheckOn !== null){                         // se tiver alguém selecionado remove a seleção e add o hidden nele
-      isCheckOn.classList.remove("checkOnDessert");
-      isCheckOn.classList.add("hidden");
-    }
     element.querySelector(".checkImg").classList.add("checkOnDessert"); // o element atual recebe a seleção e remove o hidden
     element.querySelector(".checkImg").classList.remove("hidden");
-    // checkImg aparecer desaparecer
-    let isPudding = element.classList.contains("pudding");
+
+    let isPudding = element.classList.contains("pudding");       // variavel para verificar se o element selecionado é tal item...
     let isIcecream = element.classList.contains("icecream");
     let isPie = element.classList.contains("pie");
     let isChocolat = element.classList.contains("chocolat");
 
-    if (isPudding === true){
+    if (isPudding === true){     // verifica as variáveis para guardar a seleção na varial prato selecionado
       dessert = "Pudim";
       valueDessert = 7.90;
     } else if (isIcecream === true){
@@ -127,18 +110,22 @@ function dessertSelected(element){
       dessert = "Vázio";
       valueDessert = 0;
     }
-    if(plate && dessert && drink){
-      document.querySelector(".gray-button").classList.add("hidden");
-      document.querySelector(".finish-order").classList.remove("hidden");
-    }
+    isAllSelected();
 }
-let totalValue = 0;
-function finishOrder(){
-  totalValue = valuePlate + valueDrink + valueDessert; // somar a conta do pedido
-  document.querySelector(".confirm-canva").classList.remove("hidden");
+function isAllSelected (){ // função que verifica as variáveis SE estão preenchidas para poder finalizar pedido
+  if(plate && dessert && drink){     
+    document.querySelector(".gray-button").classList.add("hidden");   // remove o botão cinza 
+    document.querySelector(".finish-order").classList.remove("hidden");  // aparecer o botão verde
+  }
+}
 
-  document.querySelector(".plate-selected").innerHTML = plate;
-  document.querySelector(".value-plate").innerHTML = valuePlate.toFixed(2);
+// fase final do código
+function finishOrder(){  // função para finalizar pedido
+  let totalValue = valuePlate + valueDrink + valueDessert; // somar a conta do pedido
+  document.querySelector(".confirm-canva").classList.remove("hidden"); // display tela de confirmação do pedido
+
+  document.querySelector(".plate-selected").innerHTML = plate; // add o prato selecionado na confirmação
+  document.querySelector(".value-plate").innerHTML = valuePlate.toFixed(2); // add o valor do prato na confirmação
 
   document.querySelector(".drink-selected").innerHTML = drink;
   document.querySelector(".value-drink").innerHTML = valueDrink.toFixed(2);
@@ -146,19 +133,17 @@ function finishOrder(){
   document.querySelector(".dessert-selected").innerHTML = dessert;
   document.querySelector(".value-dessert").innerHTML = valueDessert.toFixed(2);
 
-  document.querySelector(".totalValue").innerHTML = totalValue.toFixed(2);
+  document.querySelector(".totalValue").innerHTML = totalValue.toFixed(2);  // valor total do pedido na tela de confirmação
 }
-
-function sendOrder(){
-  let name = prompt("Seu nome? digite abaixo!");
-  let adress = prompt("Qual é o seu endereço? digite abaixo:");
-  let payment = prompt("Forma de pagamento? (cartão, dinheiro ou pix)");
+function sendOrder(){     // função de envio do pedido e captura de dados do cliente
+  let name = prompt("Seu nome? Digite abaixo!");
+  let adress = prompt("Qual é o seu endereço? Digite abaixo!");
+  let payment = prompt("Forma de pagamento? (Cartão, Dinheiro ou Pix) Digite Abaixo!");
 
   let messageWpp = "Olá, gostaria de fazer o pedido:" + "\n" + "- Prato: " + plate + "\n" + "- Bebida: " + drink + "\n" + "- Sobremesa: " + dessert + "\n" + "Cliente: " + name + "\n" + "Endereço: " + adress + "\n" + "Forma de pagamento: " + payment + "\n" + "Total: " + totalValue.toFixed(2) ;
 
   window.open("https://wa.me/5581995464901?text=" + encodeURIComponent(messageWpp));
 }
-
-function calloffOrder(){
+function calloffOrder(){  // cancelar pedido
   document.querySelector(".confirm-canva").classList.add("hidden");
 }
