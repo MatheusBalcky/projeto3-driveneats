@@ -16,7 +16,7 @@ function plateSelected(element){
     let isFish = element.classList.contains("fish");
     let isMeat = element.classList.contains("meat");
     let isPig =element.classList.contains("pig");
-    // preciso diminuir essas linhas abaixo com seletor hierárquico!
+    // preciso diminuir essas linhas abaixo com seletor hierárquico
     if (isChicken === true){
       plate = "Frango Ying Yang";
       valuePlate = 14.90;
